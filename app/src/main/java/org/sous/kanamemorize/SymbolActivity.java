@@ -61,12 +61,8 @@ public class SymbolActivity extends AppCompatActivity implements TextToSpeech.On
     }
     //region TTS
     public void soundPlay (View view) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            ttsGreater21(checkedSymbol.getValue());
-        }
-        else {
-            ttsUnder20(checkedSymbol.getValue());
-        }
+        String utteranceId=this.hashCode() + "";
+        tts.speak(checkedSymbol.getValue(), TextToSpeech.QUEUE_FLUSH, null, utteranceId);
     }
     @Override
     public void onInit(int status) {
@@ -82,15 +78,6 @@ public class SymbolActivity extends AppCompatActivity implements TextToSpeech.On
         } else {
             Log.e("TTS", "Ошибка!");
         }
-    }
-    @SuppressWarnings("deprecation")
-    private void ttsUnder20(String text) {
-        tts.speak(text, TextToSpeech.QUEUE_FLUSH, null);
-    }
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    private void ttsGreater21(String text) {
-        String utteranceId=this.hashCode() + "";
-        tts.speak(text, TextToSpeech.QUEUE_FLUSH, null, utteranceId);
     }
     //endregion
     public void checkSymbol (View view) {
