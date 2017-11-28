@@ -1,23 +1,13 @@
 package org.sous.kanamemorize;
 
-import android.annotation.TargetApi;
-import android.os.Build;
-import android.speech.tts.TextToSpeech;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.HashMap;
-import java.util.Locale;
-
-public class SymbolActivity extends AppCompatActivity implements TextToSpeech.OnInitListener {
-    private TextToSpeech tts;
-    private Button btnSound;
+public class SymbolActivity extends AppCompatActivity {
     private Symbol checkedSymbol;
     private Symbol result;
     private GroupSymbols groupSymbols;
@@ -41,8 +31,6 @@ public class SymbolActivity extends AppCompatActivity implements TextToSpeech.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_symbol);
         getSupportActionBar().hide();
-        tts = new TextToSpeech(this, this);
-        btnSound = (Button)findViewById(R.id.btnSound);
 
         groupSymbols = new GroupSymbols();
         if (MainActivity.nameAlph.equals("Hiragana")) {
@@ -59,40 +47,6 @@ public class SymbolActivity extends AppCompatActivity implements TextToSpeech.On
         TextView textValue = (TextView)findViewById(R.id.symbolText);
         textValue.setText(checkedSymbol.getValue());
     }
-    //region TTS
-    public void soundPlay (View view) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            ttsGreater21(checkedSymbol.getValue());
-        }
-        else {
-            ttsUnder20(checkedSymbol.getValue());
-        }
-    }
-    @Override
-    public void onInit(int status) {
-        if (status == TextToSpeech.SUCCESS) {
-            Locale locale = new Locale("ja");
-            int result = tts.setLanguage(locale);
-            if (result == TextToSpeech.LANG_MISSING_DATA
-                    || result == TextToSpeech.LANG_NOT_SUPPORTED) {
-                Log.e("TTS", "Извините, этот язык не поддерживается");
-            } else {
-                btnSound.setEnabled(true);
-            }
-        } else {
-            Log.e("TTS", "Ошибка!");
-        }
-    }
-    @SuppressWarnings("deprecation")
-    private void ttsUnder20(String text) {
-        tts.speak(text, TextToSpeech.QUEUE_FLUSH, null);
-    }
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    private void ttsGreater21(String text) {
-        String utteranceId=this.hashCode() + "";
-        tts.speak(text, TextToSpeech.QUEUE_FLUSH, null, utteranceId);
-    }
-    //endregion
     public void checkSymbol (View view) {
         EditText editText = (EditText)findViewById(R.id.editText);
         if (checkedSymbol.checkTranscription(editText.getText().toString())) {

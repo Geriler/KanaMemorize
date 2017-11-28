@@ -19,13 +19,6 @@
             android:textSize="150sp" />
 
         <Button
-            android:id="@+id/btnSound"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="soundPlay"
-            android:text="Произнести" />
-
-        <Button
             android:id="@+id/checkBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
