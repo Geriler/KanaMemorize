@@ -21,6 +21,7 @@
       </entry>
       <entry key="CommitDialog">
         <PlaceSettings>
+          <option name="HIGHLIGHT_POLICY" value="BY_LINE" />
           <option name="EXPAND_BY_DEFAULT" value="false" />
         </PlaceSettings>
       </entry>
