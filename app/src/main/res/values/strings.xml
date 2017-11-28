@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">KanaMemorize</string>
+    <string name="hira">Hiragana</string>
+    <string name="kata">Katakana</string>
+    <string name="tutorial">Справка</string>
+    <string name="title_activity_symbol">SymbolActivity</string>
+</resources>
