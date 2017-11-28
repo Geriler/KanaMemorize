@@ -1,7 +1,5 @@
 package org.sous.kanamemorize;
 
-import android.annotation.TargetApi;
-import android.os.Build;
 import android.speech.tts.TextToSpeech;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,14 +10,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.HashMap;
 import java.util.Locale;
 
 public class SymbolActivity extends AppCompatActivity implements TextToSpeech.OnInitListener {
     private TextToSpeech tts;
     private Button btnSound;
     private Symbol checkedSymbol;
-    private Symbol result;
     private GroupSymbols groupSymbols;
     private String[] hiraAlph = {"あ", "い", "う", "え", "お", "か", "き", "く", "け", "こ",
             "さ", "し", "す", "せ", "そ", "た", "ち", "つ", "て", "と",
@@ -89,7 +85,7 @@ public class SymbolActivity extends AppCompatActivity implements TextToSpeech.On
             Toast.makeText(this, "Не правильно", Toast.LENGTH_SHORT).show();
         }
         editText.setText(null);
-        result = groupSymbols.getNextSymbol();
+        Symbol result = groupSymbols.getNextSymbol();
         if (result == null) {
             Toast.makeText(this, "CONGRATULATIONS!!!", Toast.LENGTH_LONG).show();
             finish();
