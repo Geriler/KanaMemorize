@@ -9,7 +9,6 @@ import android.widget.Toast;
 
 public class SymbolActivity extends AppCompatActivity {
     private Symbol checkedSymbol;
-    private Symbol result;
     private GroupSymbols groupSymbols;
     private String[] hiraAlph = {"あ", "い", "う", "え", "お", "か", "き", "く", "け", "こ",
             "さ", "し", "す", "せ", "そ", "た", "ち", "つ", "て", "と",
@@ -56,7 +55,7 @@ public class SymbolActivity extends AppCompatActivity {
             Toast.makeText(this, "Не правильно", Toast.LENGTH_SHORT).show();
         }
         editText.setText(null);
-        result = groupSymbols.getNextSymbol();
+        Symbol result = groupSymbols.getNextSymbol();
         if (result == null) {
             Toast.makeText(this, "CONGRATULATIONS!!!", Toast.LENGTH_LONG).show();
             finish();
