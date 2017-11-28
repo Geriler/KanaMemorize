@@ -1,0 +1,40 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0099cc"
+    tools:context="org.sous.kanamemorize.SymbolActivity">
+
+    <LinearLayout
+        android:id="@+id/editSymbolText"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/symbolText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textSize="150sp" />
+
+        <Button
+            android:id="@+id/btnSound"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="soundPlay"
+            android:text="Произнести" />
+
+        <Button
+            android:id="@+id/checkBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="checkSymbol"
+            android:text="Проверить" />
+
+        <EditText
+            android:id="@+id/editText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</FrameLayout>
